@@ -10,6 +10,32 @@ import { HttpError } from './http-error.js';
 //   - Turn every failure into an HttpError: 504 when the timeout fired
 //     (err.name is 'TimeoutError'), 502 for a network failure, a status that
 //     isn't ok, or a body that isn't JSON.
+async function fetchJson(url) {
+    try {
+        const res = await fetch(url, {
+            signal: AbortSignal.timeout(config.upstreamTimeoutMs)
+        });
+
+        if (!res.ok) {
+            throw new HttpError(502, "Bad gateway");
+        }
+
+        const data = await res.json();
+
+        return data;
+
+    } catch (err) {
+        if (err.name === "TimeoutError") {
+            throw new HttpError(504, "Request timed out");
+        }
+
+        if (err instanceof HttpError) {
+            throw err;
+        }
+
+        throw new HttpError(502, "Bad gateway");
+    }
+}
 
 // TODO (you): look up a city with the geocoding API and return
 // { name, region, country, latitude, longitude, timezone } for the first result.
