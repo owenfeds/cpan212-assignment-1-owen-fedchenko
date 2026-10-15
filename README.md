@@ -21,6 +21,7 @@ Base URL of the forecast API
 ## Endpoints
 
 | ENDPOINT | EXAMPLE | DESCRIPTION |
+|---|---|---|
 | GET /api/weather | /api/weather?city=Toronto | Current weather and a 3-day forecast for one city |
 | GET /api/compare | /api/compare?cities=Toronto,Vancouver,Halifax | The same lookup for 2 to 5 cities at once, with a result for each city even when some fail |
 | Get /api/cache/stats | /api/cache/stats | How many answers are cached, and how often the cache was used |
