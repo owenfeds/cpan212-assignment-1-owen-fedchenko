@@ -39,7 +39,7 @@ async function fetchJson(url) {
 // TODO (you): look up a city with the geocoding API and return
 // { name, region, country, latitude, longitude, timezone } for the first result.
 // Throw a 404 HttpError when there are no results.
-export async function geocodeCity(name) {
+export async function geocodeCity(city) {
 
    const url = new URL(`${config.geocodingUrl}/search`);
     
