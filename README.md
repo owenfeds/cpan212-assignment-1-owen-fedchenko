@@ -9,6 +9,7 @@ TODO (you): the commands to install and start it, including copying `.env.exampl
 ## Environment variables
 
 | Variable | Default | Controls |
+|---|---|---|
 | PORT | 4000 | The port the server listens on |
 | GEOCODING_URL | https://geocoding-api.open-meteo.com/v1 | Base URL of the geocoding API |
 | FORECAST_URL | https://api.open-meteo.com/v1 | https://api.open-meteo.com/v1 |
